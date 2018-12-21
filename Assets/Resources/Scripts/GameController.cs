@@ -34,7 +34,7 @@ public class GameController : MonoBehaviour {
 				dictRe[i * n + j] = vector;
 			}
 		}
-		transform.position = new Vector3((n - 1) / 2f, 0, (n - 1) / 2f);	// Центрируем объект контроллера относительно поля
+		transform.position = new Vector3((n - 1) / 2f, n / 2f, (n - 1) / 2f);	// Центрируем объект контроллера относительно поля
 		for (int i = 0; i < n * n; i++){
 			conn[i] = new List<int>();
 			for (int j = 0; j < n * n; j++){
@@ -56,7 +56,10 @@ public class GameController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if (Input.GetKey(KeyCode.Escape)){
+			Application.Quit();
+		}
+
 		if (Input.GetButtonDown("Fire2"))										// Правая кнопка мыши
         {																		// ставит / убирает метку с ячейки.
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);		// При этом меняется материал
